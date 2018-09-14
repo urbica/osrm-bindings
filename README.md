@@ -1,8 +1,10 @@
 # osrm-bindings
 
+[![Build Status](https://travis-ci.org/urbica/osrm-bindings.svg?branch=master)](https://travis-ci.org/urbica/osrm-bindings)
+
 Extract and contract [OSRM](http://project-osrm.org/) graph using NodeJS.
 
-![](https://raw.githubusercontent.com/urbica/osrm-bindings/master/osrm_logo.svg)
+![](https://raw.githubusercontent.com/urbica/osrm-bindings/master/osrm_logo.svg?sanitize=true)
 
 ## Installation
 
