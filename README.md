@@ -10,7 +10,7 @@ Extract and contract [OSRM](http://project-osrm.org/) graph using NodeJS.
 ## Installation
 
 ```shell
-npm i osrm-bindings
+npm i osrm osrm-bindings
 ```
 
 ## Usage
