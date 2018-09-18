@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 
@@ -12,6 +13,21 @@ const replaceExtension = (filePath, newExtension) => {
   const newFileName = path.basename(filePath, path.extname(filePath)) + newExtension;
   return path.join(path.dirname(filePath), newFileName);
 };
+
+const getProfileNames = () =>
+  new Promise((resolve, reject) =>
+    fs.readdir(osrmProfilesPath, (error, fileNames) => {
+      if (error) {
+        reject(error);
+      }
+
+      const profileNames = fileNames
+        .filter(fileName => path.extname(fileName) === '.lua')
+        .map(fileName => path.basename(fileName, '.lua'));
+
+      resolve(profileNames);
+    })
+  );
 
 const extract = (extractPath, profileName, options = {}) =>
   new Promise((resolve, reject) => {
@@ -66,4 +82,4 @@ const contract = (graphPath, options = {}) =>
     });
   });
 
-module.exports = { extract, contract };
+module.exports = { getProfileNames, extract, contract };
