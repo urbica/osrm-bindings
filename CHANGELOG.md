@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/stepankuzmin/osrm-bindings/compare/v1.0.1...v1.1.0) (2018-09-18)
+
+
+### Features
+
+* add getProfileNames ([4acc3c6](https://github.com/stepankuzmin/osrm-bindings/commit/4acc3c6))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/stepankuzmin/osrm-bindings/compare/v1.0.0...v1.0.1) (2018-09-18)
 
