@@ -1,8 +1,9 @@
 const path = require('path');
 const { spawn } = require('child_process');
 
-const osrmBindingPath = path.join(__dirname, 'node_modules/osrm/lib/binding');
-const osrmProfilesPath = path.join(__dirname, 'node_modules/osrm/profiles');
+const osrmLibPath = path.dirname(require.resolve('osrm'));
+const osrmBindingPath = path.join(osrmLibPath, 'binding');
+const osrmProfilesPath = path.join(osrmLibPath, '..', 'profiles');
 
 const osrmExctract = path.join(osrmBindingPath, 'osrm-extract');
 const osrmContract = path.join(osrmBindingPath, 'osrm-contract');
