@@ -1,7 +1,7 @@
 {
   "name": "osrm-bindings",
   "description": "The Open Source Routing Machine bindings for NodeJS",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "keywords": [
     "osrm",
