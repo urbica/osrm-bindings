@@ -25,7 +25,6 @@
   "scripts": {
     "cz": "git-cz",
     "lint": "eslint .",
-    "precommit": "lint-staged",
     "test": "node index.test.js",
     "release": "standard-version"
   },
@@ -56,5 +55,10 @@
     "prettier-eslint-cli": "^4.7.1",
     "standard-version": "^4.4.0",
     "tape": "^4.9.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
