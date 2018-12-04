@@ -8,6 +8,7 @@ const osrmProfilesPath = path.join(osrmLibPath, '..', 'profiles');
 
 const osrmExctract = path.join(osrmBindingPath, 'osrm-extract');
 const osrmContract = path.join(osrmBindingPath, 'osrm-contract');
+const osrmDatastore = path.join(osrmBindingPath, 'osrm-datastore');
 
 const replaceExtension = (filePath, newExtension) => {
   const baseFileName = path.basename(filePath);
@@ -83,4 +84,29 @@ const contract = (graphPath, options = {}) =>
     });
   });
 
-module.exports = { getProfileNames, extract, contract };
+const datastore = (graphPath, options = {}) =>
+  new Promise((resolve, reject) => {
+    const { stdoutStream, stderrStream } = options;
+
+    const datastoreProcess = spawn(osrmDatastore, [graphPath]);
+
+    if (stdoutStream) {
+      datastoreProcess.stdout.on('data', data => stdoutStream.write(data));
+    }
+
+    if (stderrStream) {
+      datastoreProcess.stderr.on('data', data => stderrStream.write(data));
+    }
+
+    datastoreProcess.on('close', exitCode => {
+      if (exitCode === 0) {
+        return resolve(graphPath);
+      }
+
+      return reject(
+        new Error(`OSRM failed to process datastore on ${graphPath} with exit code ${exitCode}`)
+      );
+    });
+  });
+
+module.exports = { getProfileNames, extract, contract, datastore };

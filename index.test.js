@@ -1,6 +1,9 @@
 const test = require('tape');
 const path = require('path');
-const { getProfileNames, extract, contract } = require('./');
+const { getProfileNames, extract, contract, datastore } = require('./');
+
+const extractPath = path.join(__dirname, 'data', 'monaco.osm.pbf');
+const profileName = 'car';
 
 test('getProfileNames', async t => {
   try {
@@ -14,9 +17,6 @@ test('getProfileNames', async t => {
 });
 
 test('extract', async t => {
-  const extractPath = path.join(__dirname, 'data', 'monaco.osm.pbf');
-  const profileName = 'car';
-
   try {
     const graphPath = await extract(extractPath, profileName);
     t.ok(graphPath);
@@ -28,15 +28,29 @@ test('extract', async t => {
 });
 
 test('contract', async t => {
-  const extractPath = path.join(__dirname, 'data', 'monaco.osm.pbf');
-  const profileName = 'car';
-
   try {
     const graphPath = await extract(extractPath, profileName);
     t.ok(graphPath);
 
     const graphPath2 = await contract(graphPath);
     t.ok(graphPath2);
+  } catch (error) {
+    t.fail(error.message);
+  }
+
+  t.end();
+});
+
+test('datastore', async t => {
+  try {
+    const graphPath = await extract(extractPath, profileName);
+    t.ok(graphPath);
+
+    const graphPath2 = await contract(graphPath);
+    t.ok(graphPath2);
+
+    const graphPath3 = await datastore(graphPath);
+    t.ok(graphPath3);
   } catch (error) {
     t.fail(error.message);
   }
