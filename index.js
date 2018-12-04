@@ -10,7 +10,8 @@ const osrmExctract = path.join(osrmBindingPath, 'osrm-extract');
 const osrmContract = path.join(osrmBindingPath, 'osrm-contract');
 
 const replaceExtension = (filePath, newExtension) => {
-  const newFileName = path.basename(filePath, path.extname(filePath)) + newExtension;
+  const baseFileName = path.basename(filePath);
+  const newFileName = baseFileName.split('.')[0] + newExtension;
   return path.join(path.dirname(filePath), newFileName);
 };
 
