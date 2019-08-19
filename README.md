@@ -1,7 +1,6 @@
 # osrm-bindings
 
 [![Build Status](https://travis-ci.org/urbica/osrm-bindings.svg?branch=master)](https://travis-ci.org/urbica/osrm-bindings)
-[![Greenkeeper badge](https://badges.greenkeeper.io/urbica/osrm-bindings.svg)](https://greenkeeper.io/)
 
 Extract and contract [OSRM](http://project-osrm.org/) graph using NodeJS.
 
